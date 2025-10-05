@@ -2,8 +2,20 @@
 Problem 3: Number Analysis
 Analyze a list of numbers provided by the user.
 """
+import statistics
 
 def get_numbers_from_user():
+    text=input("Please enter a number : ")
+    res=[]
+    while text != "done":
+        try:
+            res.append(float(text))
+            text=input("Please enter a number : ")
+        except ValueError:
+            text=input("Please enter a number : ")
+    return (res)
+        
+
     """
     Get numbers from user until they type 'done'.
     Return a list of numbers.
@@ -13,17 +25,21 @@ def get_numbers_from_user():
     """
     numbers = []
 
-    while True:
-        # TODO: Get input from user
-        # TODO: Check if user typed 'done'
-        # TODO: Try to convert to float and add to list
-        # TODO: Handle invalid input gracefully
-        pass
 
-    return numbers
 
 
 def analyze_numbers(numbers):
+    if not numbers:
+        return None
+    dic={}
+    dic["count"]=len(numbers)
+    dic["sum"]=sum(numbers)
+    dic["average"]=sum(numbers)/len(numbers)
+    dic["mini"]=min(numbers)
+    dic["maxi"]=max(numbers)
+    dic["even_count"]=len([x for x in numbers if x % 2 == 0])
+    dic["odd_count"]=len([x for x in numbers if x % 2 != 0])
+    return dic
     """
     Analyze the list and return a dictionary with:
     - count: number of elements
@@ -40,20 +56,7 @@ def analyze_numbers(numbers):
     Returns:
         dict: Dictionary with analysis results, or None if list is empty
     """
-    if not numbers:
-        return None
 
-    analysis = {}
-
-    # TODO: Calculate count
-    # TODO: Calculate sum
-    # TODO: Calculate average
-    # TODO: Find minimum
-    # TODO: Find maximum
-    # TODO: Count even numbers (hint: use modulo operator)
-    # TODO: Count odd numbers
-
-    return analysis
 
 
 def display_analysis(analysis):
@@ -63,19 +66,16 @@ def display_analysis(analysis):
     Args:
         analysis (dict): Dictionary containing analysis results
     """
-    if not analysis:
-        return
 
     print("\nAnalysis Results:")
     print("-" * 20)
 
-    # TODO: Display all analysis results in a nice format
-    # Example:
-    # Count: 5
-    # Sum: 25
-    # Average: 5.00
-    # etc.
-    pass
+    for key,val in analysis.items():
+        print(key, ": ", val)
+    if not analysis:
+        return
+
+
 
 
 def main():
