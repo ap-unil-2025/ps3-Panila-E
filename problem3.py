@@ -2,7 +2,7 @@
 Problem 3: Number Analysis
 Analyze a list of numbers provided by the user.
 """
-import statistics
+
 
 def get_numbers_from_user():
     """Get numbers from user until they type 'done'."""
