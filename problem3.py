@@ -5,15 +5,17 @@ Analyze a list of numbers provided by the user.
 import statistics
 
 def get_numbers_from_user():
-    text=input("Please enter a number : ")
-    res=[]
-    while text != "done":
+    """Get numbers from user until they type 'done'."""
+    numbers = []
+    while True:
+        text = input("Please enter a number (or 'done' to finish): ").strip()
+        if text.lower() == "done":
+            break
         try:
-            res.append(float(text))
-            text=input("Please enter a number : ")
+            numbers.append(float(text))
         except ValueError:
-            text=input("Please enter a number : ")
-    return (res)
+            print("Invalid input; enter a numeric value or 'done'.")
+    return numbers
         
 
     """
@@ -31,15 +33,18 @@ def get_numbers_from_user():
 def analyze_numbers(numbers):
     if not numbers:
         return None
-    dic={}
-    dic["count"]=len(numbers)
-    dic["sum"]=sum(numbers)
-    dic["average"]=sum(numbers)/len(numbers)
-    dic["mini"]=min(numbers)
-    dic["maxi"]=max(numbers)
-    dic["even_count"]=len([x for x in numbers if x % 2 == 0])
-    dic["odd_count"]=len([x for x in numbers if x % 2 != 0])
-    return dic
+    total = sum(numbers)
+    count = len(numbers)
+    analysis = {
+        "count": count,
+        "sum": total,
+        "average": total / count,
+        "minimum": min(numbers),
+        "maximum": max(numbers),
+        "even_count": sum(1 for x in numbers if x.is_integer() and int(x) % 2 == 0),
+        "odd_count":  sum(1 for x in numbers if x.is_integer() and int(x) % 2 != 0),
+    }
+    return analysis
     """
     Analyze the list and return a dictionary with:
     - count: number of elements
@@ -66,14 +71,15 @@ def display_analysis(analysis):
     Args:
         analysis (dict): Dictionary containing analysis results
     """
-
+    if not analysis:
+        print("No analysis to display.")
+        return
     print("\nAnalysis Results:")
     print("-" * 20)
 
     for key,val in analysis.items():
-        print(key, ": ", val)
-    if not analysis:
-        return
+        print(f"{key}: {val}")
+
 
 
 
