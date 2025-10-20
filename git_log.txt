@@ -1,0 +1,10 @@
+81744d8 “Personalize hello message”
+ba753fc “Add hello_git.py”
+94f16a8 Complete Problem Set 3
+0ea334d Complete Problem Set 3
+e5a31cf Complete Problem Set 4
+9baf8e7 Complete Problem Set 3
+f48ffa8 Complete Problem Set 2
+b0507ff Add my name and date
+7bcb689 Add GitHub Classroom autograding configuration
+2dc2daa Initial commit
