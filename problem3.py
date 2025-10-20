@@ -25,6 +25,7 @@ def get_numbers_from_user():
     Returns:
         list: List of numbers entered by user
     """
+   
     numbers = []
 
 
